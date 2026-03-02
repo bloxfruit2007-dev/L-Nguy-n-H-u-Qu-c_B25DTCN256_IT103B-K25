@@ -1,0 +1,140 @@
+bject Management
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Management System</title>
+</head>
+<body>
+<script>
+let students = [];
+
+while (true) {
+    let choice = prompt(
+        "===== STUDENT MANAGEMENT SYSTEM =====\n" +
+        "1. Create Student\n" +
+        "2. Read All Students\n" +
+        "3. Filter Scholarship Candidates\n" +
+        "4. Update Student Profile\n" +
+        "5. Delete Record\n" +
+        "6. Compliance Verification\n" +
+        "7. Academic Statistics\n" +
+        "8. Data Normalization\n" +
+        "0. Exit\n" +
+        "Enter your choice:"
+    );
+
+    switch (choice) {
+        case "1":
+            createStudent();
+            break;
+        case "2":
+            readAllStudents();
+            break;
+        case "3":
+            filterScholarship();
+            break;
+        case "4":
+            updateStudent();
+            break;
+        case "5":
+            deleteStudent();
+            break;
+        case "6":
+            complianceVerify();
+            break;
+        case "7":
+            academicStats();
+            break;
+        case "8":
+            dataNormalization();
+            break;
+        case "0":
+            alert("Thoát chương trình");
+            break;
+        default:
+            alert("Lựa chọn không hợp lệ");
+    }
+
+    if (choice === "0") break;
+}
+
+function createStudent() {
+    let student = {
+        id: Number(prompt("Nhập ID:")),
+        name: prompt("Nhập tên:"),
+        age: Number(prompt("Nhập tuổi:")),
+        gpa: Number(prompt("Nhập GPA:")),
+        status: prompt("Nhập trạng thái (active/inactive):")
+    };
+    students.push(student);
+    alert("Thêm sinh viên thành công");
+}
+
+function readAllStudents() {
+    if (students.length === 0) {
+        console.log("Danh sách rỗng");
+        return;
+    }
+    students.forEach(s => {
+        console.log(
+            `ID: ${s.id} | Name: ${s.name} | Age: ${s.age} | GPA: ${s.gpa} | Status: ${s.status}`
+        );
+    });
+}
+
+function filterScholarship() {
+    let result = students.filter(s => s.gpa > 8.0);
+    console.log("Danh sách đủ điều kiện học bổng:");
+    result.forEach(s => console.log(s.name, s.gpa));
+}
+
+function updateStudent() {
+    let id = Number(prompt("Nhập ID cần cập nhật:"));
+    let found = false;
+
+    students.forEach(s => {
+        if (s.id === id) {
+            s.name = prompt("Nhập tên mới:");
+            s.gpa = Number(prompt("Nhập GPA mới:"));
+            found = true;
+        }
+    });
+
+    alert(found ? "Cập nhật thành công" : "Không tìm thấy ID");
+}
+
+function deleteStudent() {
+    let id = Number(prompt("Nhập ID cần xóa:"));
+    let before = students.length;
+
+    students = students.filter(s => s.id !== id);
+
+    alert(students.length < before ? "Xóa thành công" : "Không tìm thấy ID");
+}
+
+function complianceVerify() {
+    let hasUnder18 = students.some(s => s.age < 18);
+    let allActive = students.every(s => s.status === "active");
+
+    console.log("Có sinh viên dưới 18 tuổi:", hasUnder18);
+    console.log("Tất cả đều active:", allActive);
+}
+
+function academicStats() {
+    if (students.length === 0) {
+        console.log("Không có dữ liệu");
+        return;
+    }
+    let total = students.reduce((sum, s) => sum + s.gpa, 0);
+    console.log("GPA trung bình:", total / students.length);
+}
+
+function dataNormalization() {
+    let names = students.map(s => s.name.toUpperCase());
+    console.log("Danh sách tên IN HOA:");
+    console.log(names);
+}
+</script>
+</body>
+</html>
