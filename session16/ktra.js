@@ -1,10 +1,10 @@
 let listTask = [
     {name: `Quét nhà`},
     {name: `Lau nhà`},
-    {name: `Rửa bát`},
-];
+    {name: `Nấu cơm`},
 
-let input = document.getElementById(`TaskInput`);
+];
+let input = document.getElementById(`taskInput`);
 let btn = document.getElementById(`btn`);
 let list = document.getElementById(`taskList`);
 btn.addEventListener(`click`,createTask)
@@ -18,10 +18,11 @@ function createTask(){
     input.focus();
     console.log(listTask);
     displayTask();
-    
 }
-function displayTask(){
-    listTask.forEach(input =>{
-        list.innerHTML='<li>${value.name}<li>'
+function displayTask() {
+    listTask.forEach(value => {
+        list.innerHTML = `
+        <li>${value.name}</li>
+        `
     })
 }
