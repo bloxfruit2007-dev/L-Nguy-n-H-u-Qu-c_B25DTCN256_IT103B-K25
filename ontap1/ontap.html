@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="ontap.css">
+</head>
+<body>
+    <h1> Todo List</h1>
+    <!--Phần nhập liệu-->
+    <form action="" class="todo-form">
+        <div>
+            <input type="text" placeholder="nhập công việc" class="err-input">
+            <p class="err-msg">dữ liệu nhập vào không hợp lệ</p>
+        </div>
+        <input type="text" placeholder="nhập công việc">
+        <input type="date" name="" id="">
+        <select name="" id="">
+            <option value="">Trạng thái công việc</option>
+            <option value="">To do</option>
+            <option value="">Pending</option>
+            <option value="">Done</option>
+            <button>Thêm công việc</button>
+        </select>
+    </form>
+    <div>
+        <input type="text" placeholder="Nhập công việc cần tìm kiếm">
+        <button>tìm kiếm</button>
+        <select name="" id="">
+            <option value="">lọc theo trạng thái</option>
+            <option value="">To do</option>
+            <option value="">Pending</option>
+            <option value="">Done</option>
+
+        </select>
+    </div>
+    <!--Phần hiển thị-->
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>To do <button>tăng dần</button></th>
+            <th>Deadline</th>
+            <th>Status</th>
+        </tr>
+        
+    </table>
+</body>
+<script src="ontap.js"></script>
+</html>
